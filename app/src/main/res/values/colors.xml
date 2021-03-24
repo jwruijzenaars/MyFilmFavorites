@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="patheYellowPrimary">#ffc426</color>
+    <color name="systemBar">#252525</color>
+    <color name="colorAccent">#6d6e71</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#111111</color>
+    <color name="patheGrey">#252525</color>
+</resources>

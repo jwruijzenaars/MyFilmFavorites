@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Pathe</string>
+    <string name="iv_company_logo" translatable="false">Pathe</string>
+    <string name="action_settings">Settings</string>
+    <string name="sp_rating">Rating</string>
+    <string name="sp_year">Jaar</string>
+    <string name="sp_genre">Genre</string>
+    <string name="sv_search_bar">Type here your movie!</string>
+    <string name="tv_page_title">Home Page</string>
+    <string name="tv_page_title_lists">Mijn lijsten</string>
+    <string name="bt_delete_list">Verwijder lijst</string>
+    <string name="bt_delete_item">Verwijder item</string>
+    <string name="bt_back">Terug</string>
+    <string name="tv_list_name">My lists</string>
+    <string name="tv_rating">Rating</string>
+    <string name="tv_cast">Cast</string>
+    <string name="tv_trailer">Trailer</string>
+    <string name="image_description">Image</string>
+    <string name="bt_add_list">Add to list</string>
+    <string name="tv_movie_title" translatable="false">Titel Film</string>
+
+</resources>
