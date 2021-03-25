@@ -50,7 +50,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
                 R.array.spinner_choices, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSortList.setAdapter(adapter);
-
+        mSearchbar = findViewById(R.id.sv_search_bar);
 
         mRecyclerView = findViewById(R.id.rv_movie_recycler);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -84,6 +84,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        // switch case:
+            //voor elke case 1 methode.
+            switch (position) {
+                case 0: //geef movielist mee, wordt gesorteerd en terug gestuurd.
+            }
 
         }
 

@@ -1,5 +1,6 @@
 package com.application.pathe.presentation;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,7 +30,6 @@ public class MovieDetailActivity extends AppCompatActivity {
     private TextView detailCastContent;
     private TextView detailTrailerTitle;
     private VideoView detailTrailerContent;
-    private ScrollView scrollview;
 //
    @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,22 +45,18 @@ public class MovieDetailActivity extends AppCompatActivity {
        detailCastContent = findViewById(R.id.tv_movie_detail_cast_content);
        detailTrailerTitle = findViewById(R.id.tv_movie_detail_trailer_title);
        detailTrailerContent = findViewById(R.id.vv_movie_detail_trailer_video);
-       scrollview = findViewById(R.id.sv_detail_scrollview);
 
        Intent intent = getIntent();
        Movie movie = (Movie) intent.getSerializableExtra("Movie");
 
 
        detailTitle.setText(movie.getTitle());
-
-       detailRatingTitle.setText("Rating");
-
+       detailRatingTitle.setText(R.string.tv_rating);
        detailRatingText.setText(movie.getRating());
-
-           Picasso.get().load(movie.getImgUrl()).into(detailCoverImage);
+       Picasso.get().load(movie.getImgUrl()).into(detailCoverImage);
 
        detailDescription.setText(movie.getDescription());
-       detailCastTitle.setText("Cast");
+       detailCastTitle.setText(R.string.tv_cast);
 
        String castString = "";
        ArrayList<String> castMembers = movie.getCastMember();
@@ -70,7 +66,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
        detailCastContent.setText(castString);
 
-       detailTrailerTitle.setText("Trailer");
+       detailTrailerTitle.setText(R.string.tv_trailer);
        detailTrailerContent.setVideoPath(movie.getTrailerUrl());
        (findViewById(R.id.sv_detail_scrollview)).post(new Runnable() {
            public void run() {
