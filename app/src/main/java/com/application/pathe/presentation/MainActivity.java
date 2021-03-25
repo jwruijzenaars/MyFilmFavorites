@@ -9,6 +9,7 @@ import com.application.pathe.data_access.MovieApiTask;
 import com.application.pathe.data_access.MoviePlayingApiTask;
 import com.application.pathe.data_access.MoviePopularApiTask;
 import com.application.pathe.domain.Movie;
+import com.application.pathe.utilities.SpinnerUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -84,11 +85,13 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+            SpinnerUtils spinnerUtils = new SpinnerUtils();
         // switch case:
             //voor elke case 1 methode.
             switch (position) {
-                case 0: //geef movielist mee, wordt gesorteerd en terug gestuurd.
+                case 0:
+                    ArrayList<Movie> newMovieList = spinnerUtils.sortNameAToZ(mMovieList);
+
             }
         }
 
