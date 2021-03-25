@@ -90,7 +90,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             switch (position) {
                 case 0: //geef movielist mee, wordt gesorteerd en terug gestuurd.
             }
-
         }
 
         @Override
