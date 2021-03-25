@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_choices">
+        <item>@string/sp_name_az</item>
+        <item>@string/sp_name_za</item>
+        <item>@string/sp_rating_hl</item>
+        <item>@string/sp_rating_lh</item>
+        <item>@string/sp_year_hl</item>
+        <item>@string/sp_year_lh</item>
+    </string-array>
+</resources>

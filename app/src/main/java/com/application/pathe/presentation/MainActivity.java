@@ -1,5 +1,6 @@
 package com.application.pathe.presentation;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 // JW test1
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
     private static final String MOVIE_NAME = "Movie";
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -44,7 +45,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
         mSortList = findViewById(R.id.sp_sort_list);
-//        mSortList.setOnItemClickListener(this);
+        mSortList.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.spinner_choices, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSortList.setAdapter(adapter);
+
 
         mRecyclerView = findViewById(R.id.rv_movie_recycler);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -76,15 +82,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-    }
+        }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
 
-    }
+        }
 
     class MoviePlayingApiListener implements MoviePlayingApiTask.MoviePlayingApiListener {
 
