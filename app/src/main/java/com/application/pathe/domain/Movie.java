@@ -31,6 +31,20 @@ public class Movie implements Serializable {
         this.availability = availability;
     }
 
+    @Override
+    public String toString() {
+        return  "title='" + title + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", description='" + description + '\'' +
+                ", rating='" + rating + '\'' +
+                ", castMember=" + castMember +
+                ", trailerUrl='" + trailerUrl + '\'' +
+                ", genre='" + genre + '\'' +
+                ", language='" + language + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", availability='" + availability;
+    }
+
     public String getTitle() {
         return title;
     }

@@ -32,9 +32,9 @@ public class MoviePopularApiTask extends AsyncTask<String, Void, List<Movie>> {
     private String JSON_MOVIE_GET_RESULTS = "results";
     private String JSON_MOVIE_RATING = "vote_average";
 
-    private MoviePopularApiTask.MoviePopularApiListener listener;
+    private MovieApiListener listener;
 
-    public MoviePopularApiTask(MoviePopularApiTask.MoviePopularApiListener listener) {
+    public MoviePopularApiTask(MovieApiListener listener) {
         this.listener = listener;
     }
 
@@ -143,7 +143,7 @@ public class MoviePopularApiTask extends AsyncTask<String, Void, List<Movie>> {
         return id;
     }
 
-    public interface MoviePopularApiListener {
+    public interface MovieApiListener {
         public void handleMovieResult(String result);
         public void onMoviesAvailable(List<Movie> movieList);
     }

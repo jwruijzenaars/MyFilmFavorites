@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoviePlayingApiTask extends AsyncTask<String, Void, List<Movie>> {
+public class MovieUpcomingApiTask extends AsyncTask<String, Void, List<Movie>> {
     private static final String TAG = MovieApiTask.class.getSimpleName();
     private static final String JSON_MOVIE_ID = "id";
 
@@ -31,9 +31,9 @@ public class MoviePlayingApiTask extends AsyncTask<String, Void, List<Movie>> {
     private String JSON_MOVIE_GET_RESULTS = "results";
     private String JSON_MOVIE_RATING = "vote_average";
 
-    private MoviePlayingApiTask.MoviePlayingApiListener listener;
+    private MovieApiListener listener;
 
-    public MoviePlayingApiTask(MoviePlayingApiTask.MoviePlayingApiListener listener) {
+    public MovieUpcomingApiTask(MovieApiListener listener) {
         this.listener = listener;
     }
 
@@ -48,7 +48,7 @@ public class MoviePlayingApiTask extends AsyncTask<String, Void, List<Movie>> {
 
         try {
 
-            buildUrl1 = NetworkUtils.buildPopularListUrl();
+            buildUrl1 = NetworkUtils.buildUpcomingListUrl();
             movieSearchResults = NetworkUtils.getResponseFromHttpUrl(buildUrl1);
 
             Log.i(TAG, "Crash check");
@@ -146,7 +146,7 @@ public class MoviePlayingApiTask extends AsyncTask<String, Void, List<Movie>> {
         return id;
     }
 
-    public interface MoviePlayingApiListener {
+    public interface MovieApiListener {
         public void handleMovieResult(String result);
         public void onMoviesAvailable(List<Movie> movieList);
     }

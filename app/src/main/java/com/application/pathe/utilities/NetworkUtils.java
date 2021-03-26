@@ -17,6 +17,8 @@ public class NetworkUtils {
     final static String MOVIE_API_V3 = "88eb80ac323dd890b4e6eda54cbfbc0e";
     final static String MOVIE_API_CREDITS = "credits";
     final static String MOVIE_API_POPULAR = "popular";
+    final static String MOVIE_API_RATING = "top_rated";
+    final static String MOVIE_API_UPCOMING = "upcoming";
     final static String MOVIE_API_V4 = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OGViODBhYzMyM2RkODkwYjRlNmVkYTU0Y2JmYmMwZSIsInN1YiI6IjVlNzIxNDRlYjFmNjhkMDAxMmRjZTQ0NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0addbQ6PmtMG0upm5C-Qt8dLIfaq0bru2F2XzakNbf4";
     final static String MOVIE_API_URL = "https://api.themoviedb.org/3/movie/";
     final static String MOVIE_API_URL_SEARCH = "https://api.themoviedb.org/3/search/movie";
@@ -73,7 +75,31 @@ public class NetworkUtils {
     }
 
     public static URL buildPopularListUrl () {
-        String builtUri = MOVIE_API_URL+MOVIE_API_POPULAR+"?"+MOVIE_API_FORMAT+MOVIE_API_V3+"&"+MOVIE_API_LANGUAGE+"&"+MOVIE_API_PAGE;
+        String builtUri = MOVIE_API_URL + MOVIE_API_POPULAR +"?"+ MOVIE_API_FORMAT + MOVIE_API_V3 +"&"+ MOVIE_API_LANGUAGE +"&"+ MOVIE_API_PAGE;
+
+        URL url = null;
+        try {
+            url = new URL(builtUri);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return url;
+    }
+
+    public static URL buildRatedListUrl () {
+        String builtUri = MOVIE_API_URL + MOVIE_API_RATING +"?"+ MOVIE_API_FORMAT + MOVIE_API_V3 + "&" + MOVIE_API_LANGUAGE +"&"+ MOVIE_API_PAGE;
+
+        URL url = null;
+        try {
+            url = new URL(builtUri);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return url;
+    }
+
+    public static URL buildUpcomingListUrl () {
+        String builtUri = MOVIE_API_URL + MOVIE_API_UPCOMING +"?"+ MOVIE_API_FORMAT + MOVIE_API_V3 + "&" + MOVIE_API_LANGUAGE +"&"+ MOVIE_API_PAGE;
 
         URL url = null;
         try {

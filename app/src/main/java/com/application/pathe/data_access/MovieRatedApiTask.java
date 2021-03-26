@@ -31,16 +31,15 @@ public class MovieRatedApiTask extends AsyncTask<String, Void, List<Movie>> {
     private String JSON_MOVIE_GET_RESULTS = "results";
     private String JSON_MOVIE_RATING = "vote_average";
 
-    private MovieRatedApiTask.MovieRatedApiListener listener;
+    private MovieApiListener listener;
 
-    public MovieRatedApiTask(MovieRatedApiTask.MovieRatedApiListener listener) {
+    public MovieRatedApiTask(MovieApiListener listener) {
         this.listener = listener;
     }
 
     @Override
     protected List<Movie> doInBackground(String... strings) {
         Log.i(TAG, "doInBackground aangeroepen");
-        String searchQuery = strings[0];
 
         URL buildUrl1;
         String movieSearchResults;
@@ -48,7 +47,7 @@ public class MovieRatedApiTask extends AsyncTask<String, Void, List<Movie>> {
 
         try {
 
-            buildUrl1 = NetworkUtils.buildSearchMovieTitleUrl(searchQuery);
+            buildUrl1 = NetworkUtils.buildRatedListUrl();
             movieSearchResults = NetworkUtils.getResponseFromHttpUrl(buildUrl1);
 
             Log.i(TAG, "Crash check");
@@ -142,7 +141,7 @@ public class MovieRatedApiTask extends AsyncTask<String, Void, List<Movie>> {
         return id;
     }
 
-    public interface MovieRatedApiListener {
+    public interface MovieApiListener {
         public void handleMovieResult(String result);
         public void onMoviesAvailable(List<Movie> movieList);
     }

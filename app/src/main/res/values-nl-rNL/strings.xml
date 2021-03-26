@@ -2,8 +2,6 @@
 <resources>
     <string name="app_name">Pathé</string>
     <string name="action_settings">Instellingen</string>
-    <string name="sp_rating_lh">Rating laag naar hoog</string>
-    <string name="sp_year_lh">Jaar laag naar hoog</string>
     <string name="tv_page_title">Mijn Pathé</string>
     <string name="tv_page_title_lists">Mijn lijsten</string>
     <string name="bt_delete_list">Verwijder lijst</string>
@@ -16,8 +14,7 @@
     <string name="tv_trailer">Trailer</string>
     <string name="tv_list_name">Mijn lijsten</string>
     <string name="bt_add_list">Toevoegen aan lijst</string>
-    <string name="sp_rating_hl">Rating hoog naar laag</string>
-    <string name="sp_year_hl">Jaar hoog naar laag</string>
-    <string name="sp_name_az">Naam A tot Z</string>
-    <string name="sp_name_za">Naam Z tot A</string>
+    <string name="sp_upcoming">Verwacht</string>
+    <string name="sp_popular">Populair</string>
+    <string name="sp_rated">Hoogste rating</string>
 </resources>
