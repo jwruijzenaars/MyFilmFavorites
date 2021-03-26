@@ -1,5 +1,6 @@
 package com.application.pathe.utilities;
 
+
 import com.application.pathe.data_access.MoviePopularApiTask;
 import com.application.pathe.domain.Movie;
 
@@ -39,6 +40,5 @@ public class SpinnerUtils implements Comparator<Movie>{
         public void handleMovieResult(String result);
         public void onMoviesAvailable(List<Movie> movieList);
     }
-
 
 }

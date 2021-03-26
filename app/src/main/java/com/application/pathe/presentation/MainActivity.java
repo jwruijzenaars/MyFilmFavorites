@@ -12,6 +12,7 @@ import com.application.pathe.data_access.MovieRatedApiTask;
 import com.application.pathe.domain.Movie;
 import com.application.pathe.utilities.SpinnerUtils;
 
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -104,6 +105,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             case 2:
                     getNewestMoviesFromApi();
                 break;
+
         }
 
     }
