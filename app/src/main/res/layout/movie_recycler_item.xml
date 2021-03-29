@@ -5,17 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="15dp">
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="5dp">
 
     <ImageView
         android:id="@+id/iv_movie_image"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:layout_marginTop="15dp"
         android:layout_weight="1" />
 
     <LinearLayout
         android:layout_width="290dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
         android:orientation="vertical">
 
         <TextView
@@ -23,14 +27,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="25sp" />
+            android:textColor="@color/blackTitle"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_movie_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="15sp" />
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

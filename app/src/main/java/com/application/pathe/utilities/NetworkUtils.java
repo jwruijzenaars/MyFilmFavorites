@@ -32,8 +32,8 @@ public class NetworkUtils {
 //https://api.themoviedb.org/3/movie/550?api_key=5c135f148aad677f96fa566df2585042
 
     public static URL buildSearchMovieTitleUrl(String searchTerm) {
-        String builtUri = MOVIE_API_URL_SEARCH+"?"+MOVIE_API_FORMAT+MOVIE_API_V3+"&"+
-                MOVIE_API_QUERY+searchTerm+"&"+MOVIE_API_PAGE+"&"+MOVIE_API_PG;
+        String builtUri = MOVIE_API_URL_SEARCH +"?"+ MOVIE_API_FORMAT + MOVIE_API_V3 +"&"+ MOVIE_API_LANGUAGE +"&"+
+                MOVIE_API_QUERY + searchTerm +"&"+ MOVIE_API_PAGE +"&"+ MOVIE_API_PG;
 
         URL url = null;
         try {
@@ -70,7 +70,6 @@ public class NetworkUtils {
             e.printStackTrace();
         }
 
-        Log.d(TAG, "Built url: " + url);
         return url;
     }
 

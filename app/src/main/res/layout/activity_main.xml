@@ -36,6 +36,7 @@
             android:layout_marginLeft="28dp"
             android:layout_marginTop="8dp"
             android:text="@string/tv_page_title"
+            android:textColor="@color/blackTitle"
             android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +72,7 @@
             android:hint="@string/sv_search_bar"
             android:textColor="@color/colorBlack"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
 
         </SearchView>
 

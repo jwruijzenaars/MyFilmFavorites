@@ -6,4 +6,5 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#111111</color>
     <color name="patheGrey">#252525</color>
+    <color name="blackTitle">#000000</color>
 </resources>

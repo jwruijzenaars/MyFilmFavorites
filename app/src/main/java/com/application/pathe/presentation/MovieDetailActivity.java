@@ -22,13 +22,11 @@ import java.util.ArrayList;
 public class MovieDetailActivity extends AppCompatActivity {
 
     private TextView detailTitle;
-    private TextView detailRatingTitle;
     private TextView detailRatingText;
     private ImageView detailCoverImage;
     private TextView detailDescription;
     private TextView detailCastTitle;
     private TextView detailCastContent;
-    private TextView detailTrailerTitle;
     private VideoView detailTrailerContent;
 //
    @Override
@@ -37,13 +35,11 @@ public class MovieDetailActivity extends AppCompatActivity {
        setContentView(R.layout.activity_detail);
 
        detailTitle = findViewById(R.id.tv_movie_detail_title);
-       detailRatingTitle = findViewById(R.id.tv_movie_detail_rating_title);
        detailRatingText = findViewById(R.id.tv_movie_detail_rating_text);
        detailCoverImage = findViewById(R.id.iv_movie_detail_cover);
        detailDescription = findViewById(R.id.tv_movie_detail_description);
        detailCastTitle = findViewById(R.id.tv_movie_detail_cast_title);
        detailCastContent = findViewById(R.id.tv_movie_detail_cast_content);
-       detailTrailerTitle = findViewById(R.id.tv_movie_detail_trailer_title);
        detailTrailerContent = findViewById(R.id.vv_movie_detail_trailer_video);
 
        Intent intent = getIntent();
@@ -51,7 +47,6 @@ public class MovieDetailActivity extends AppCompatActivity {
 
 
        detailTitle.setText(movie.getTitle());
-       detailRatingTitle.setText(R.string.tv_rating);
        detailRatingText.setText(movie.getRating());
        Picasso.get().load(movie.getImgUrl()).into(detailCoverImage);
 
@@ -66,7 +61,6 @@ public class MovieDetailActivity extends AppCompatActivity {
 
        detailCastContent.setText(castString);
 
-       detailTrailerTitle.setText(R.string.tv_trailer);
        detailTrailerContent.setVideoPath(movie.getTrailerUrl());
        (findViewById(R.id.sv_detail_scrollview)).post(new Runnable() {
            public void run() {

@@ -17,19 +17,19 @@ import java.util.List;
 
 public class MovieUpcomingApiTask extends AsyncTask<String, Void, List<Movie>> {
     private static final String TAG = MovieApiTask.class.getSimpleName();
-    private static final String JSON_MOVIE_ID = "id";
 
-    private String JSON_MOVIE_TITLE = "title";
-    private String JSON_MOVIE_IMAGE_URL = "poster_path";
-    private String JSON_MOVIE_DESCRIPTION = "overview";
-    private String JSON_MOVIE_CAST = "name";
-    private String JSON_MOVIE_CAST_KEY = "cast";
-    private String JSON_MOVIE_TRAILER_URL;
-    private String JSON_MOVIE_GENRE = "genre_ids";
-    private String JSON_MOVIE_LANGUAGE = "original_language";
-    private String JSON_MOVIE_RELEASE_DATE = "release_date";
-    private String JSON_MOVIE_GET_RESULTS = "results";
-    private String JSON_MOVIE_RATING = "vote_average";
+    private static final String JSON_MOVIE_ID = "id";
+    private static final String JSON_MOVIE_TITLE = "title";
+    private static final String JSON_MOVIE_IMAGE_URL = "poster_path";
+    private static final String JSON_MOVIE_DESCRIPTION = "overview";
+    private static final String JSON_MOVIE_CAST = "name";
+    private static final String JSON_MOVIE_CAST_KEY = "cast";
+    private static final String JSON_MOVIE_TRAILER_URL = "";
+    private static final String JSON_MOVIE_GENRE = "genre_ids";
+    private static final String JSON_MOVIE_LANGUAGE = "original_language";
+    private static final String JSON_MOVIE_RELEASE_DATE = "release_date";
+    private static final String JSON_MOVIE_GET_RESULTS = "results";
+    private static final String JSON_MOVIE_RATING = "vote_average";
 
     private MovieApiListener listener;
 

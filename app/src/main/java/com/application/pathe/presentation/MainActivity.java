@@ -38,6 +38,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     private MovieRecyclerViewAdapter mAdapter;
     private Spinner mSortList;
     private SearchView mSearchbar;
+    private int mSpinnerPos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +51,16 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
                 R.array.spinner_choices, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSortList.setAdapter(adapter);
+
         mSearchbar = findViewById(R.id.sv_search_bar);
+        mSearchbar.setOnQueryTextListener(new MovieApiListener());
 
         mRecyclerView = findViewById(R.id.rv_movie_recycler);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mAdapter = new MovieRecyclerViewAdapter(mMovieList, new MovieClickListener());
         mRecyclerView.setAdapter(mAdapter);
+
 
         getPopularMoviesFromApi();
     }
@@ -81,17 +85,18 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         movieUpcomingApiTask.execute("");
     }
 
-    private void getMoviesFromApi(String fight_club) {
+    private void getMoviesFromApi(String searchQuery) {
         Log.i(TAG, "getMoviesFromApi aangeroepen");
 
         MovieApiTask movieApiTask = new MovieApiTask(new MovieApiListener());
-        movieApiTask.execute(fight_club);
+        movieApiTask.execute(searchQuery);
 
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Log.i(TAG, "onItemSelected aangeroepen");
+        mSpinnerPos = position;
         SpinnerUtils sortFunctions = new SpinnerUtils(new MovieApiListener());
         // switch case:
         //voor elke case 1 methode.
@@ -105,18 +110,14 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             case 2:
                     getNewestMoviesFromApi();
                 break;
-
         }
-
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
+    public void onNothingSelected(AdapterView<?> parent) {}
 
     class MovieApiListener implements MovieApiTask.MovieApiListener, MoviePopularApiTask.MovieApiListener,
-            MovieUpcomingApiTask.MovieApiListener, SpinnerUtils.MovieApiListener, MovieRatedApiTask.MovieApiListener {
+            MovieUpcomingApiTask.MovieApiListener, SpinnerUtils.MovieApiListener, MovieRatedApiTask.MovieApiListener, SearchView.OnQueryTextListener {
 
         @Override
         public void handleMovieResult(String result) {
@@ -131,6 +132,50 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             mMovieList.addAll(movieList);
             mAdapter.notifyDataSetChanged();
             mRecyclerView.invalidate();
+        }
+
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+            Log.i(TAG, "onQueryTextSubmit aangeroepen");
+            if (query.equals("") || query.equals(" ")) {
+                switch (mSpinnerPos) {
+                    case 0: //geef movielist mee, wordt gesorteerd en terug gestuurd.
+                        getPopularMoviesFromApi();
+                        break;
+                    case 1:
+                        getRatedMoviesFromApi();
+                        break;
+                    case 2:
+                        getNewestMoviesFromApi();
+                        break;
+                }
+                return false;
+            } else {
+                getMoviesFromApi(query);
+                return true;
+            }
+        }
+
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            Log.i(TAG, "onQueryTextChange aangeroepen");
+            if (newText.equals("") || newText.equals(" ")) {
+                switch (mSpinnerPos) {
+                    case 0: //geef movielist mee, wordt gesorteerd en terug gestuurd.
+                        getPopularMoviesFromApi();
+                        break;
+                    case 1:
+                        getRatedMoviesFromApi();
+                        break;
+                    case 2:
+                        getNewestMoviesFromApi();
+                        break;
+                }
+                return false;
+            } else {
+                getMoviesFromApi(newText);
+                return true;
+            }
         }
     }
 
