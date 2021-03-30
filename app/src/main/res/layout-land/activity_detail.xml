@@ -162,6 +162,38 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
+                <Button
+                    android:id="@+id/bt_show_review"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="@string/bt_show_review" />
+
+                <LinearLayout
+                    android:id="@+id/ll_review_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@android:drawable/btn_default"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_review_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="Reviews"
+                        android:textColor="@color/blackTitle"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_reviews"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
 
             </LinearLayout>
         </ScrollView>

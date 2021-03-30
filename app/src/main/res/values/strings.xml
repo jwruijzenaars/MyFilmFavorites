@@ -20,7 +20,9 @@
     <string name="image_description">Afbeelding</string>
     <string name="bt_add_list">Toevoegen aan lijst</string>
     <string name="tv_movie_title" translatable="false">Titel Film</string>
-
+    <string name="bt_show_review">Toon reviews</string>
+    <string name="bt_hide_review">Verberg reviews</string>
+    <string name="tv_rating_title">Beoordeling</string>
 
 
 </resources>

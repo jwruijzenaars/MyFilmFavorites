@@ -12,13 +12,16 @@ public class Movie implements Serializable {
     private String description;
     private String rating;
     private ArrayList<String> castMember;
+    private ArrayList<Review> reviews;
     private String trailerUrl;
     private String genre;
     private String language;
     private String releaseDate;
     private String availability;
 
-    public Movie(String title, String imgUrl, String description, String rating, ArrayList<String> castMember, String trailerUrl, String genre, String language, String releaseDate, String availability) {
+    public Movie(String title, String imgUrl, String description, String rating, ArrayList<String> castMember,
+                 String trailerUrl, String genre, String language, String releaseDate, String availability,
+                 ArrayList<Review> reviews) {
         this.title = title;
         this.imgUrl = imgUrl;
         this.description = description;
@@ -29,6 +32,7 @@ public class Movie implements Serializable {
         this.language = language;
         this.releaseDate = releaseDate;
         this.availability = availability;
+        this.reviews = reviews;
     }
 
     @Override
@@ -63,6 +67,10 @@ public class Movie implements Serializable {
 
     public ArrayList<String> getCastMember() {
         return castMember;
+    }
+
+    public ArrayList<Review> getReviews() {
+        return reviews;
     }
 
     public String getTrailerUrl() {
