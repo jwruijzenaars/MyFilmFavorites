@@ -43,15 +43,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/bt_add_to_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@color/colorAccent"
-            android:paddingLeft="5dp"
+            android:background="@color/reviewBackgroundColor"
+            android:padding="8dp"
             android:text="@string/bt_add_list"
+            android:textColor="@color/blackTitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -174,17 +175,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:background="@color/reviewBackgroundColor"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="@string/bt_show_review" />
+                    android:padding="8dp"
+                    android:text="@string/bt_show_review"
+                    android:textColor="@color/blackTitle" />
 
                 <LinearLayout
                     android:id="@+id/ll_review_wrapper"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:background="@android:drawable/btn_default"
-                    android:orientation="vertical">
+                    android:background="@color/reviewBackgroundColor"
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
                     <TextView
                         android:id="@+id/tv_review_title"
@@ -192,7 +197,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:text="Reviews"
-                        android:textColor="@color/blackTitle"
+                        android:textColor="@color/reviewColor"
                         android:textStyle="bold" />
 
                     <androidx.recyclerview.widget.RecyclerView

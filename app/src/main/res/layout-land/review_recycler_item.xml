@@ -20,7 +20,7 @@
             android:layout_marginEnd="5dp"
             android:layout_marginRight="5dp"
             android:text="@string/tv_rating_title"
-            android:textColor="@color/blackTitle"
+            android:textColor="@color/reviewColor"
             android:textStyle="bold" />
 
         <TextView
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/blackTitle"
+            android:textColor="@color/reviewColor"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:textColor="@color/colorBlack" />
+        android:textColor="@color/reviewColor" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,14 +52,14 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:textColor="@color/blackTitle"
+            android:textColor="@color/reviewColor"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_created_at"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/blackTitle"
+            android:textColor="@color/reviewColor"
             android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

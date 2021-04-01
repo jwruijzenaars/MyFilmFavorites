@@ -2,6 +2,7 @@ package com.application.pathe.presentation;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import com.application.pathe.R;
@@ -13,6 +14,7 @@ import com.application.pathe.domain.Movie;
 import com.application.pathe.utilities.SpinnerUtils;
 
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,8 +24,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +64,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         mRecyclerView.setLayoutManager(layoutManager);
         mAdapter = new MovieRecyclerViewAdapter(mMovieList, new MovieClickListener());
         mRecyclerView.setAdapter(mAdapter);
-
 
         getPopularMoviesFromApi();
     }

@@ -23,6 +23,7 @@
     <string name="bt_show_review">Toon reviews</string>
     <string name="bt_hide_review">Verberg reviews</string>
     <string name="tv_rating_title">Beoordeling</string>
+    <string name="sw_night_mode">Nacht</string>
 
 
 </resources>
