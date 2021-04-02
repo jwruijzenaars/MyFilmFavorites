@@ -94,7 +94,6 @@ public class MovieDetailActivity extends AppCompatActivity {
        detailShowReview.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               System.out.println("test");
                if(detailShowReview.getText().equals("Show reviews") || detailShowReview.getText().equals("Toon reviews")) {
                    detailReviewTitle.setVisibility(View.VISIBLE);
                    detailReviews.setVisibility(View.VISIBLE);

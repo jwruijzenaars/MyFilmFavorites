@@ -1,10 +1,15 @@
 package com.application.pathe.utilities;
 
-import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
+
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -28,6 +33,8 @@ public class NetworkUtils {
     final static String MOVIE_API_PAGE = "page=1";
     final static String MOVIE_API_PG = "include_adult=true";
     final static String MOVIE_API_LANGUAGE = "language=en-US";
+    final static String MOVIE_API_GET_TOKEN_URL = "https://api.themoviedb.org/3/authentication/token/new?";
+    final static String MOVIE_API_LOGIN_URL = "https://api.themoviedb.org/3/authentication/token/validate_with_login?";
 
 
 //https://api.themoviedb.org/3/movie/550?api_key=5c135f148aad677f96fa566df2585042
@@ -108,6 +115,30 @@ public class NetworkUtils {
         return url;
     }
 
+    public static URL buildGetAuthenticationUrl () {
+        String builtUri = MOVIE_API_GET_TOKEN_URL + MOVIE_API_FORMAT + MOVIE_API_V3;
+
+        URL url = null;
+        try {
+            url = new URL(builtUri);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return url;
+    }
+
+    public static URL buildLoginUrl () {
+        String builtUri = MOVIE_API_LOGIN_URL + MOVIE_API_FORMAT + MOVIE_API_V3;
+
+        URL url = null;
+        try {
+            url = new URL(builtUri);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return url;
+    }
+
 
 
 //    public static URL buildSearchMovieUrl(String movieId) {
@@ -138,6 +169,33 @@ public class NetworkUtils {
             } else {
                 return null;
             }
+        } finally {
+            urlConnection.disconnect();
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static String postResponseFromHttpUrl(URL url, String tokenString) throws IOException {
+        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        urlConnection.setRequestMethod("POST");
+        urlConnection.setRequestProperty("Content-Type", "application/json; utf-8");
+        urlConnection.setRequestProperty("Accept", "application/json");
+        urlConnection.setDoOutput(true);
+        String jsonInputString = "{" + "username:" + "jw.ruijzenaars," + "password:" + "JJWV123," + "request_token:" + tokenString + "}";
+        try (OutputStream os = urlConnection.getOutputStream()) {
+            byte[] input = jsonInputString.getBytes("utf-8");
+            os.write(input, 0, input.length);
+
+            try(BufferedReader br = new BufferedReader(
+                    new InputStreamReader(urlConnection.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine = null;
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
+                return response.toString();
+            }
+
         } finally {
             urlConnection.disconnect();
         }

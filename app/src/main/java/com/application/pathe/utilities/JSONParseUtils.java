@@ -36,6 +36,28 @@ public class JSONParseUtils {
 
     public JSONParseUtils() {}
 
+    public String doParseJsonRequestToken(String rawToken) {
+        String requestToken = null;
+        try{
+            JSONObject tokenObject = new JSONObject(rawToken);
+            requestToken = tokenObject.getString("request_token");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return requestToken;
+    }
+
+//    public String doParseTokenToSessionId(String movieSearchResults) {
+//        String requestToken = null;
+//        try{
+//            JSONObject tokenObject = new JSONObject(rawToken);
+//            requestToken = tokenObject.getString("request_token");
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        return requestToken;
+//    }
+
     public List<Movie> doParseJsonToArrayList(String jsonString1) {
         List<Movie> movieResult = new ArrayList<>();
 
@@ -101,8 +123,12 @@ public class JSONParseUtils {
                     if (reviewObject != null) {
                         JSONObject authorDetail = reviewObject.getJSONObject(JSON_MOVIE_AUTHOR_DETAIL);
 
+                        String reviewRating = authorDetail.getString(JSON_REVIEW_RATING);
+                        if (reviewRating.equals("null")){
+                            reviewRating = "n/a";
+                        }
                         String substrCreatedAt = reviewObject.getString(JSON_REVIEW_CREATED_AT).substring(0,10);
-                        review.add(new Review(reviewObject.getString(JSON_MOVIE_AUTHOR_KEY), reviewObject.getString(JSON_REVIEW_CONTENT), substrCreatedAt, authorDetail.getString(JSON_REVIEW_RATING)));
+                        review.add(new Review(reviewObject.getString(JSON_MOVIE_AUTHOR_KEY), reviewObject.getString(JSON_REVIEW_CONTENT), substrCreatedAt, reviewRating));
                     } else {
                         break;
                     }
