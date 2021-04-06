@@ -1,5 +1,6 @@
 package com.application.pathe.utilities;
 
+import com.application.pathe.domain.Lists;
 import com.application.pathe.domain.Movie;
 import com.application.pathe.domain.Review;
 
@@ -34,6 +35,9 @@ public class JSONParseUtils {
     private static final String JSON_MOVIE_GET_RESULTS = "results";
     private static final String JSON_MOVIE_RATING = "vote_average";
 
+    private static final String JSON_LIST_NAME = "name";
+    private static final String JSON_LIST_ID = "id";
+
     public JSONParseUtils() {}
 
     public String doParseJsonRequestToken(String rawToken) {
@@ -47,16 +51,18 @@ public class JSONParseUtils {
         return requestToken;
     }
 
-//    public String doParseTokenToSessionId(String movieSearchResults) {
-//        String requestToken = null;
-//        try{
-//            JSONObject tokenObject = new JSONObject(rawToken);
-//            requestToken = tokenObject.getString("request_token");
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        return requestToken;
-//    }
+    public String doParseTokenToSessionId(String rawSessionID) {
+        String sessionID = null;
+        try{
+            JSONObject tokenObject = new JSONObject(rawSessionID);
+            sessionID = tokenObject.getString("session_id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return sessionID;
+    }
+
+
 
     public List<Movie> doParseJsonToArrayList(String jsonString1) {
         List<Movie> movieResult = new ArrayList<>();
@@ -134,7 +140,7 @@ public class JSONParseUtils {
                     }
                 }
 
-                Movie newMovie = new Movie(title, imageUrl, description, rating, cast , "placeholder", genre, language, releaseDate, "available", review);
+                Movie newMovie = new Movie(title, imageUrl, description, rating, cast , "placeholder", genre, language, releaseDate, "available", review, id);
                 movieResult.add(newMovie);
 
             }
@@ -142,5 +148,24 @@ public class JSONParseUtils {
             e.printStackTrace();
         }
         return movieResult;
+    }
+
+    public List<Lists> doParseJsonToListsList(String jsonString) {
+        List<Lists> returnable = new ArrayList<>();
+        try {
+            JSONObject results = new JSONObject(jsonString);
+
+            JSONArray listsList = results.getJSONArray(JSON_MOVIE_GET_RESULTS);
+            for (int j = 0; j < listsList.length(); j++) {
+                JSONObject currentList = listsList.getJSONObject(j);
+                String name = currentList.getString(JSON_LIST_NAME);
+                String id = currentList.getString(JSON_LIST_ID);
+                returnable.add(new Lists(name, id));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return returnable;
     }
 }

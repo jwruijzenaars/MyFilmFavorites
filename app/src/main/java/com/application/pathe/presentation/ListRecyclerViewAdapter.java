@@ -5,23 +5,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.pathe.R;
+import com.application.pathe.domain.Lists;
 import com.application.pathe.domain.Movie;
 
 import java.util.List;
 
 public class ListRecyclerViewAdapter extends RecyclerView.Adapter<ListRecyclerViewAdapter.ViewHolder> {
 
-    private List<Movie> mMoviesList;
-    private MovieRecyclerViewAdapter.MovieClickListener listener;
+    private ListRecyclerViewAdapter.ListClickListener listener;
+    private List<Lists> mListsList;
 
-    public ListRecyclerViewAdapter(List<Movie> mMoviesList, MovieRecyclerViewAdapter.MovieClickListener listener) {
-        this.mMoviesList = mMoviesList;
+    ListRecyclerViewAdapter(List<Lists> ListsList, ListClickListener listener) {
+        this.mListsList = ListsList;
         this.listener = listener;
     }
 
@@ -30,34 +30,35 @@ public class ListRecyclerViewAdapter extends RecyclerView.Adapter<ListRecyclerVi
         Context context = parent.getContext();
         LayoutInflater inflator = LayoutInflater.from(context);
 
-        View movieListItem = inflator.inflate(R.layout.movie_recycler_item, parent, false);
-        ListRecyclerViewAdapter.ViewHolder viewHolder = new ListRecyclerViewAdapter.ViewHolder(movieListItem);
+        View listsListItem = inflator.inflate(R.layout.list_recycler_item, parent, false);
+        ListRecyclerViewAdapter.ViewHolder viewHolder = new ListRecyclerViewAdapter.ViewHolder(listsListItem);
 
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder (ListRecyclerViewAdapter.ViewHolder holder, int position) {
-        Movie mMovie = mMoviesList.get(position);
+    public void onBindViewHolder (ViewHolder holder, int position) {
+        Lists mList = mListsList.get(position);
 
-        holder.title.setText(mMovie.getTitle());
+        holder.name.setText(mList.getListName());
     }
 
     @Override
     public int getItemCount() {
-        return mMoviesList.size();
+        if (mListsList != null) {
+            return mListsList.size();
+        } else {return 0;}
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
 
-        public TextView title;
-        public Button share;
+        public TextView name;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.title = itemView.findViewById(R.id.tv_movie_title);
-            this.share =  itemView.findViewById(R.id.btn_share_list);
+            this.name = itemView.findViewById(R.id.tv_list_title);
             itemView.setOnClickListener(this);
         }
 
@@ -68,7 +69,7 @@ public class ListRecyclerViewAdapter extends RecyclerView.Adapter<ListRecyclerVi
         }
     }
 
-    public interface MovieClickListener {
+    public interface ListClickListener {
         public void onItemClick(int position);
     }
 

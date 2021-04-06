@@ -1,18 +1,24 @@
 package com.application.pathe.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Lists {
+public class Lists implements Serializable {
 
     private String mListName;
     private List<Movie> mMovieList;
-    private boolean mPreDefined;
+    private String mListID;
 
 
-    public Lists(String listName, List<Movie> movieList, boolean isPreDefined) {
+    public Lists(String listName, List<Movie> movieList, String listID) {
         mListName = listName;
         mMovieList = movieList;
-        mPreDefined = isPreDefined;
+        mListID = listID;
+    }
+
+    public Lists(String listName, String listID) {
+        mListName = listName;
+        mListID = listID;
     }
 
     public void setListName(String mListName) {
@@ -33,5 +39,9 @@ public class Lists {
 
     public void deleteMovie(int position) {
         mMovieList.remove(position);
+    }
+
+    public String getmListID() {
+        return mListID;
     }
 }

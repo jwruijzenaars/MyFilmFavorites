@@ -21,4 +21,5 @@
     <string name="bt_hide_review">Hide reviews</string>
     <string name="tv_rating_title">Rating</string>
     <string name="sw_night_mode">Night</string>
+    <string name="bt_list_navigate">My lists</string>
 </resources>

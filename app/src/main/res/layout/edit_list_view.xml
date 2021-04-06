@@ -84,7 +84,7 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_movie_recycler"
+                android:id="@+id/rv_list_recycler"
                 android:layout_width="390dp"
                 android:layout_height="match_parent"
                 android:baselineAligned="false" />

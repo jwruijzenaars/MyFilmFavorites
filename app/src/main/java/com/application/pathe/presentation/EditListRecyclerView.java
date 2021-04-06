@@ -1,6 +1,5 @@
 package com.application.pathe.presentation;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -26,7 +25,7 @@ public class EditListRecyclerView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_list_view);
 
-        mRecyclerView = findViewById(R.id.rv_movie_recycler);
+        mRecyclerView = findViewById(R.id.rv_list_recycler);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mAdapter = new EditListRecyclerViewAdapter(mMovieList, new ButtonClickListener());

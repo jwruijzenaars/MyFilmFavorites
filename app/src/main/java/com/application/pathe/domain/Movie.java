@@ -18,10 +18,11 @@ public class Movie implements Serializable {
     private String language;
     private String releaseDate;
     private String availability;
+    private String id;
 
     public Movie(String title, String imgUrl, String description, String rating, ArrayList<String> castMember,
                  String trailerUrl, String genre, String language, String releaseDate, String availability,
-                 ArrayList<Review> reviews) {
+                 ArrayList<Review> reviews, String id) {
         this.title = title;
         this.imgUrl = imgUrl;
         this.description = description;
@@ -33,6 +34,7 @@ public class Movie implements Serializable {
         this.releaseDate = releaseDate;
         this.availability = availability;
         this.reviews = reviews;
+        this.id = id;
     }
 
     @Override
@@ -91,5 +93,9 @@ public class Movie implements Serializable {
 
     public String getAvailability() {
         return availability;
+    }
+
+    public String getId() {
+        return id;
     }
 }
