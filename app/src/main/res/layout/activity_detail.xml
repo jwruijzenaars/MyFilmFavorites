@@ -24,7 +24,8 @@
             android:contentDescription="@string/iv_company_logo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/pathe_logo" />
+            app:srcCompat="@mipmap/pathe_logo"
+            tools:srcCompat="@mipmap/pathe_logo" />
 
         <TextView
             android:id="@+id/tv_page_title"
@@ -34,7 +35,7 @@
             android:layout_marginLeft="28dp"
             android:layout_marginTop="8dp"
             android:text="@string/tv_page_title"
-            android:textColor="@color/blackTitle"
+            android:textColor="@color/appTitleColor"
             android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

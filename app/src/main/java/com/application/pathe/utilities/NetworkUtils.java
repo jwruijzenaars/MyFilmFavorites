@@ -234,6 +234,7 @@ public class NetworkUtils {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
         try (OutputStreamWriter os = new OutputStreamWriter(con.getOutputStream());) {
             os.write(input.toString());
             os.flush();
@@ -253,17 +254,6 @@ public class NetworkUtils {
                 System.out.println(con.getResponseMessage());
                 return "fail";
             }
-//
-//            try(BufferedReader br = new BufferedReader(
-//                    new InputStreamReader(urlConnection.getInputStream(), "utf-8"))) {
-//                StringBuilder response = new StringBuilder();
-//                String responseLine = null;
-//                while ((responseLine = br.readLine()) != null) {
-//                    response.append(responseLine.trim());
-//                }
-//                return response.toString();
-//            }
-//
         }
         finally {
             con.disconnect();

@@ -46,6 +46,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     private int mSpinnerPos;
     private String mSessionID;
     private Button mListNavigate;
+    private boolean mFirstTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         Bundle bundle = intent.getExtras();
         mMovieList = (ArrayList<Movie>) bundle.get(MOVIES);
         mSessionID = bundle.getString(SESSION_ID);
+        mFirstTime = true;
 
         mSortList = findViewById(R.id.sp_sort_list);
         mSortList.setOnItemSelectedListener(this);
@@ -76,13 +78,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         mListNavigate = findViewById(R.id.bt_list_navigate);
         mListNavigate.setOnClickListener(new ListNavigateClickListener());
 
-    }
-
-    private void loginAccount() {
-        Log.i(TAG, "loginAccount aangeroepen");
-
-        LoginApiTask loginApiTask = new LoginApiTask(new LoginListener());
-        loginApiTask.execute();
     }
 
     private void getPopularMoviesFromApi() throws InterruptedException {
@@ -117,25 +112,30 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Log.i(TAG, "onItemSelected aangeroepen");
-        mSpinnerPos = position;
-        SpinnerUtils sortFunctions = new SpinnerUtils(new MovieApiListener());
-        // switch case:
-        //voor elke case 1 methode.
-        switch (position) {
-            case 0: //geef movielist mee, wordt gesorteerd en terug gestuurd.
-                try {
-                    getPopularMoviesFromApi();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case 1:
+        if (!mFirstTime){
+            mSpinnerPos = position;
+            SpinnerUtils sortFunctions = new SpinnerUtils(new MovieApiListener());
+            // switch case:
+            //voor elke case 1 methode.
+            switch (position) {
+                case 0: //geef movielist mee, wordt gesorteerd en terug gestuurd.
+                    try {
+                        getPopularMoviesFromApi();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 1:
                     getRatedMoviesFromApi();
-                break;
-            case 2:
+                    break;
+                case 2:
                     getNewestMoviesFromApi();
-                break;
+                    break;
+            }
+        } else {
+            mFirstTime = false;
         }
+
     }
 
     @Override
@@ -187,29 +187,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
         @Override
         public boolean onQueryTextChange(String newText) {
-            Log.i(TAG, "onQueryTextChange aangeroepen");
-            if (newText.equals("") || newText.equals(" ")) {
-                switch (mSpinnerPos) {
-                    case 0: //geef movielist mee, wordt gesorteerd en terug gestuurd.
-                        try {
-                            getPopularMoviesFromApi();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        break;
-                    case 1:
-                        getRatedMoviesFromApi();
-                        break;
-                    case 2:
-                        getNewestMoviesFromApi();
-                        break;
-                }
-                return false;
-            } else {
-                getMoviesFromApi(newText);
-                return true;
-            }
+            return true;
         }
+
     }
 
     class MovieClickListener implements MovieRecyclerViewAdapter.MovieClickListener {
@@ -239,19 +219,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
                 startActivity(intent);
             }
-    }
-
-    class LoginListener implements LoginApiTask.LoginListener {
-
-        @Override
-        public void handleLoginResult(String result) {
-
-        }
-
-        @Override
-        public void onSessionCreated(String sessionId) {
-            mSessionID = sessionId;
-        }
     }
 
     @Override

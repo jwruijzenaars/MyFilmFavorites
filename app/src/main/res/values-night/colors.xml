@@ -7,7 +7,9 @@
     <color name="colorBlack">#FFFFFF</color>
     <color name="patheGrey">#252525</color>
     <color name="blackTitle">#FFFFFF</color>
+    <color name="appTitleColor">#000000</color>
     <color name="reviewColor">#FFFFFF</color>
     <color name="reviewBackgroundColor">#111111</color>
-    <color name="loadingColor">#000000</color>
+    <color name="loadingColor">#ffc426</color>
+    <color name="loadingBackground">#252525</color>
 </resources>

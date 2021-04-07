@@ -5,18 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.application.pathe.R;
 import com.application.pathe.data_access.LoginApiTask;
 import com.application.pathe.data_access.MoviePopularApiTask;
 import com.application.pathe.domain.Movie;
+import com.application.pathe.utilities.LoadingScreenUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadFactory;
 
-public class LoadingScreen extends AppCompatActivity {
+public class LoadingScreen extends Activity {
     private static final String SESSION_ID = "Session_Id";
     private static final String MOVIES = "Movies";
     private static final String TAG = LoadingScreen.class.getSimpleName();
@@ -30,23 +29,21 @@ public class LoadingScreen extends AppCompatActivity {
             setContentView(R.layout.loading_screen);
 
         loginAccount();
+
         try {
             getPopularMoviesFromApi();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        try {
-            goToMainActivity();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        new LoadingScreenUtils(new LoadingListener()).execute();
+
     }
 
     private void goToMainActivity() throws InterruptedException {
-        Thread.sleep(5000);
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.putExtra(MOVIES, mMovieList);
+        Log.d(TAG, "goToMainActivity: SessionID: " + mSessionID);
         intent.putExtra(SESSION_ID, mSessionID);
         startActivity(intent);
     }
@@ -75,6 +72,7 @@ public class LoadingScreen extends AppCompatActivity {
 
         @Override
         public void onSessionCreated(String sessionId) {
+            Log.d(TAG, "onSessionCreated aangeroepen " + sessionId);
             mSessionID = sessionId;
         }
     }
@@ -94,5 +92,17 @@ public class LoadingScreen extends AppCompatActivity {
             mMovieList.addAll(movieList);
         }
 
+    }
+
+    private class LoadingListener implements LoadingScreenUtils.LoadingListener {
+        @Override
+        public void handleLoginResult(String result) {
+
+        }
+
+        @Override
+        public void onCompletion(String sessionId) throws InterruptedException {
+            goToMainActivity();
+        }
     }
 }
