@@ -70,8 +70,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         mListNavigate = findViewById(R.id.bt_list_navigate);
         mListNavigate.setOnClickListener(new ListNavigateClickListener());
 
-        getPopularMoviesFromApi();
         loginAccount();
+        try {
+            getPopularMoviesFromApi();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void loginAccount() {
@@ -81,10 +85,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         loginApiTask.execute();
     }
 
-    private void getPopularMoviesFromApi() {
+    private void getPopularMoviesFromApi() throws InterruptedException {
         Log.i(TAG, "getPopularMoviesFromApi aangeroepen");
 
         MoviePopularApiTask moviePopularApiTask = new MoviePopularApiTask(new MovieApiListener());
+        Thread.sleep(1000);
         moviePopularApiTask.execute();
     }
 
@@ -118,7 +123,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         //voor elke case 1 methode.
         switch (position) {
             case 0: //geef movielist mee, wordt gesorteerd en terug gestuurd.
+                try {
                     getPopularMoviesFromApi();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 break;
             case 1:
                     getRatedMoviesFromApi();
@@ -156,7 +165,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             if (query.equals("") || query.equals(" ")) {
                 switch (mSpinnerPos) {
                     case 0: //geef movielist mee, wordt gesorteerd en terug gestuurd.
-                        getPopularMoviesFromApi();
+                        try {
+                            getPopularMoviesFromApi();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         break;
                     case 1:
                         getRatedMoviesFromApi();
@@ -178,7 +191,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             if (newText.equals("") || newText.equals(" ")) {
                 switch (mSpinnerPos) {
                     case 0: //geef movielist mee, wordt gesorteerd en terug gestuurd.
-                        getPopularMoviesFromApi();
+                        try {
+                            getPopularMoviesFromApi();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         break;
                     case 1:
                         getRatedMoviesFromApi();

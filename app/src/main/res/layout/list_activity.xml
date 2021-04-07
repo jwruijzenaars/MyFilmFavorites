@@ -68,30 +68,25 @@
             android:layout_marginTop="183dp"
             android:orientation="vertical"
             android:padding="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginBottom="5dp"
                 android:text="@string/tv_list_name"
                 android:textColor="@color/blackTitle"
                 android:textSize="25sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="8dp" />
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_list_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
                 android:foregroundGravity="bottom" />
         </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
