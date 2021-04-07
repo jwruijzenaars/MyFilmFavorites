@@ -22,4 +22,5 @@
     <string name="tv_rating_title">Beoordeling</string>
     <string name="sw_night_mode">Nacht</string>
     <string name="bt_list_navigate">Mijn lijsten</string>
+    <string name="tv_loading">Laden...</string>
 </resources>

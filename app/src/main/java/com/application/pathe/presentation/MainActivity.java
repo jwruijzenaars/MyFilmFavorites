@@ -36,6 +36,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
     private static final String MOVIE_NAME = "Movie";
     private static final String SESSION_ID = "Session_Id";
+    private static final String MOVIES = "Movies";
     private static final String TAG = MainActivity.class.getSimpleName();
     private ArrayList<Movie> mMovieList = new ArrayList<>();
     private RecyclerView mRecyclerView;
@@ -50,6 +51,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        mMovieList = (ArrayList<Movie>) bundle.get(MOVIES);
+        mSessionID = bundle.getString(SESSION_ID);
 
         mSortList = findViewById(R.id.sp_sort_list);
         mSortList.setOnItemSelectedListener(this);
@@ -70,12 +76,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         mListNavigate = findViewById(R.id.bt_list_navigate);
         mListNavigate.setOnClickListener(new ListNavigateClickListener());
 
-        loginAccount();
-        try {
-            getPopularMoviesFromApi();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     private void loginAccount() {

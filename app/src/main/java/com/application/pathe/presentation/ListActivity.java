@@ -27,7 +27,7 @@ public class ListActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit_list_view);
+        setContentView(R.layout.list_activity);
         Intent intent = getIntent();
         mSessionId = (String) intent.getSerializableExtra(SESSION_ID);
         System.out.println("SessionID: " + mSessionId);

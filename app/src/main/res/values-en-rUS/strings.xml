@@ -22,4 +22,5 @@
     <string name="tv_rating_title">Rating</string>
     <string name="sw_night_mode">Night</string>
     <string name="bt_list_navigate">My lists</string>
+    <string name="tv_loading">Loading...</string>
 </resources>

@@ -62,8 +62,6 @@ public class JSONParseUtils {
         return sessionID;
     }
 
-
-
     public List<Movie> doParseJsonToArrayList(String jsonString1) {
         List<Movie> movieResult = new ArrayList<>();
 

@@ -9,4 +9,5 @@
     <color name="blackTitle">#FFFFFF</color>
     <color name="reviewColor">#FFFFFF</color>
     <color name="reviewBackgroundColor">#111111</color>
+    <color name="loadingColor">#000000</color>
 </resources>
