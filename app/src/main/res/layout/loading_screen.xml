@@ -16,14 +16,15 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="234dp"
-            android:layout_height="220dp"
+            android:layout_height="234dp"
             android:layout_marginTop="16dp"
             android:contentDescription="@string/iv_company_logo"
+            android:src="@mipmap/pathe_logo_foreground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@mipmap/pathe_logo_foreground" />
+            app:srcCompat="@mipmap/ic_pathe" />
 
         <TextView
             android:id="@+id/textView2"

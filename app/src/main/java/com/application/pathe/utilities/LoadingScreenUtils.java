@@ -32,15 +32,11 @@ public class LoadingScreenUtils extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         Log.d(TAG, "onPostExecute aangeroepen");
-        try {
-            listener.onCompletion(s);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        listener.onCompletion(s);
     }
 
     public interface LoadingListener {
         public void handleLoginResult(String result);
-        public void onCompletion(String sessionId) throws InterruptedException;
+        public void onCompletion(String sessionId);
     }
 }

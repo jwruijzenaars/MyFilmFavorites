@@ -29,18 +29,13 @@ public class LoadingScreen extends Activity {
             setContentView(R.layout.loading_screen);
 
         loginAccount();
-
-        try {
-            getPopularMoviesFromApi();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        getPopularMoviesFromApi();
 
         new LoadingScreenUtils(new LoadingListener()).execute();
 
     }
 
-    private void goToMainActivity() throws InterruptedException {
+    private void goToMainActivity() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.putExtra(MOVIES, mMovieList);
         Log.d(TAG, "goToMainActivity: SessionID: " + mSessionID);
@@ -55,11 +50,10 @@ public class LoadingScreen extends Activity {
         loginApiTask.execute();
     }
 
-    private void getPopularMoviesFromApi() throws InterruptedException {
+    private void getPopularMoviesFromApi() {
         Log.i(TAG, "getPopularMoviesFromApi aangeroepen");
 
         MoviePopularApiTask moviePopularApiTask = new MoviePopularApiTask(new LoadingScreen.MovieApiListener());
-        Thread.sleep(1000);
         moviePopularApiTask.execute();
     }
 
@@ -101,7 +95,7 @@ public class LoadingScreen extends Activity {
         }
 
         @Override
-        public void onCompletion(String sessionId) throws InterruptedException {
+        public void onCompletion(String sessionId) {
             goToMainActivity();
         }
     }
